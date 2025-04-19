@@ -1,0 +1,70 @@
+<odoo>
+<record model="ir.ui.view" id="view_achievements_tree">
+        <field name="name">sales.achievements.list</field>
+        <field name="model">sales.achievements</field>
+        <field name="arch" type="xml">
+            <list string="Move Models" sample="1">
+                <field name="name"/>
+                <field name="job_position"/>
+                <field name="sales_team_id"/>
+                <field name="sales_person_id"/>
+                <field name="amount"/>
+                <field name="invoice_id"/>
+                <field name="invoice_date"/>
+            </list>
+        </field>
+    </record>
+
+
+
+    <!--    FORM -->
+    <record model="ir.ui.view" id="view_achievements_form">
+        <field name="name">sales.achievements.form</field>
+        <field name="model">sales.achievements</field>
+        <field name="arch" type="xml">
+            <form string="Move Model" class="o_auto_transfer_form">
+                <header>
+
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box" invisible="not id">
+
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+
+                            <field name="job_position"/>
+                            <field name="sales_team_id"/>
+                            <field name="sales_person_id"/>
+                        </group>
+                        <group>
+                            <field name="amount"/>
+                            <field name="invoice_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_achievements">
+        <field name="name">Achievements</field>
+        <field name="res_model">sales.achievements</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- MENU -->
+    <menuitem id="menu_auto_achievements"
+              name="Achievements"
+              action="action_achievements" sequence="30"/>
+
+    <menuitem id="sub_menu_auto_achievements"
+              name="Achievements" parent="menu_auto_achievements"
+              action="action_achievements" sequence="30"/>
+</odoo>

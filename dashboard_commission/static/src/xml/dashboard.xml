@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!--  Template for Pos Dashboard  -->
+    <t t-name="SalesCommissionDashboard">
+        <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+            <div class="row" style="margin:0px;">
+                <div class="col-md-6" id="col-graph">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <b>
+                                    <h3 class="custom-h3">SALE REPORT</h3>
+                                </b>
+                            </div>
+                            <div class="card-tools">
+
+<!--                                <select class="sales_team_filter" id="sales_team_filter">-->
+<!--                                    <option t-att-value="false" />-->
+<!--                                    <t t-foreach="state.sales_teams" t-as="team" t-key="team['id']">-->
+<!--                                        <option-->
+<!--                                            t-att-value="team['id']"-->
+<!--                                            t-out="team['name']"-->
+<!--                                        />-->
+<!--                                    </t>-->
+<!--                                </select>-->
+                                <span>Sales Team</span>
+
+                                <select id="sales_team_filter" class="form-control" t-on-click="onclick_pos_sales_team">
+
+                                        <option value="all">All Teams</option>
+                                        <t t-foreach="state.sales_teams" t-as="team" t-key="team['id']">
+                                            <option t-att-value="team['id']" t-esc="team['name']"/>
+                                        </t>
+                                </select>
+                            </div>
+
+                            <div class="card-tools">
+
+                                <span>Date Filters</span>
+                                  <input type="date" id="start_date_filter" class="form-control d-inline-block w-auto mx-2"/>
+                                  <input type="date" id="end_date_filter" class="form-control d-inline-block w-auto mx-2"/>
+                                      <button class="btn btn-primary" id="apply_filters" t-on-click="onclick_pos_sales_team">Apply Date</button>
+                            </div>
+
+                            <div class="card-tools">
+<!--                            <select id="pos_sales"-->
+<!--                                    t-on-click="onclick_pos_sales">-->
+<!--                                <option style="display:none;"> &#45;&#45; select an option &#45;&#45; </option>-->
+<!--                                <option value="pos_hourly_sales">Hourly</option>-->
+<!--                                <option value="pos_monthly_sales">Monthly</option>-->
+<!--                                <option value="pos_year_sales">Yearly</option>-->
+<!--                            </select>-->
+                        </div>
+                        </div>
+                        <h4>SALE DETAILS</h4>
+                        <div class="card-body mt-3" id="in_ex_body_hide">
+                             <div class="row">
+                                <div class="col-md-12">
+                                   <p id="myelement1"> </p>
+                                    <div class="chart">
+                                      <canvas id="commission_distribution" width="200"
+                                              height="90"> </canvas>
+                                   </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-lg-4  top_customer_graph_view">
+                    <div class="oh-card text-color">
+                        <div class="oh-card-body pb-0">
+                            <h4 class="mb-0">
+                            </h4>
+                        </div>
+                        <canvas class="commission_distribution_graph" id="commission_distribution_graph" width="100" height="80"/>
+                    </div>
+
+
+                </div>
+
+                <div class="col-sm-4 col-lg-4  top_customer_graph_view">
+                    <div class="oh-card text-color">
+                        <div class="oh-card-body pb-0">
+                            <h4 class="mb-0">
+                            </h4>
+                        </div>
+                        <canvas class="sales_trend_chart" id="sales_trend_chart" width="100" height="80"/>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </t>
+</templates>

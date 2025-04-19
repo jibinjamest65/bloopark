@@ -1,0 +1,38 @@
+<odoo>
+    <record id="crm_team_form_view_inherit2" model="ir.ui.view">
+        <field name="name">crm.team.form.view.inherit</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button class="oe_stat_button" type="object"
+                                name="action_open_invoice" icon="fa-book">
+                        </button>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="action_generate_invoice" string="Generate Expense"
+                        type="object" class="oe_highlight"/>
+                </header>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="regional_manager_id"/>
+                <field name="expense_journal_id"/>
+                <field name="expense_account_id"/>
+            </xpath>
+            <xpath expr="//page[@name='members_users']" position="after">
+                <page string="Commission Slabs" name="slabs_commission">
+                            <field name="commission_ids">
+                                <list>
+                                    <field name="salesperson_id"/>
+                                    <field name="job_position"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="percentage"/>
+                                </list>
+                            </field>
+                        </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
